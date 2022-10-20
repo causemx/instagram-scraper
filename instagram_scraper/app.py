@@ -28,7 +28,7 @@ import requests
 import requests.packages.urllib3.util.connection as urllib3_connection
 import tqdm
 
-from .constants import *
+from constants import *
 
 warnings.filterwarnings('ignore')
 
@@ -605,6 +605,7 @@ class InstagramScraper(object):
         elif '__typename' in node and node['__typename'] == 'GraphImage':
             node['urls'] = [self.get_original_image(node['display_url'])]
         else:
+            """
             if details is None:
                 details = self.__get_media_details(node['id'])
 
@@ -638,6 +639,7 @@ class InstagramScraper(object):
                             self.logger.warning('First media version is not the best candidate for ' + node['shortcode'])
 
                         node['urls'].append(best_candidate['url'])
+                        """
 
         return node
 
